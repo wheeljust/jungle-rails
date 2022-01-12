@@ -19,6 +19,17 @@ class OrdersController < ApplicationController
     redirect_to cart_path, flash: { error: e.message }
   end
 
+  def enhanced_order
+    @enhanced_order ||= @order.line_items.map{|line_item|{quantity: line_item.quantity, product: Product.find_by(id: line_item.product_id)}}
+  end
+  helper_method :enhanced_order
+  
+  def order_subtotal_cents
+    enhanced_order.map {|line_item| line_item[:product].price_cents * line_item[:quantity]}.sum
+  end
+  helper_method :order_subtotal_cents
+
+
   private
 
   def empty_cart!
