@@ -7,7 +7,7 @@
 <% if enhanced_cart.empty? %>
 
   <div class="alert alert-danger">Looks like your cart is empty!</div>
-  <div><%= link_to 'Keep Shopping!', :root %></div>
+  <div><%= link_to 'Keep Shopping!', :root, class: 'btn btn-info'%></div>
 
 <% else %>
   <div class="panel panel-default items">
