@@ -18,7 +18,7 @@
       <h3 class="panel-title">Total Number of Categories</h3>
     </div>
     <div class="panel-body">
-      <%= @dashboard[:category_count] %>
+      <%= link_to @dashboard[:category_count],  [:admin, :categories] %>
     </div>
   </div>
 
