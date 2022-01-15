@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  def new
-    
+  def new 
   end
 
   def create
@@ -8,7 +7,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to '/', notice: 'Thanks for signing up!'
     else
       redirect_to [:user, :new]
     end
