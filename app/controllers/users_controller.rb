@@ -9,7 +9,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/', notice: 'Thanks for signing up!'
     else
-      redirect_to [:user, :new]
+      # If the sign up is unsuccessful reset to the sign up page
+      render :new
     end
   end
 
