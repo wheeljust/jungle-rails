@@ -7,15 +7,15 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
       
-      <%= form_for :session, url: '/session' do |form| %>
+      <%= form_for :session, url: '/sessions' do |form| %>
 
         <div class="form-group">
           <%= form.label :email %>
-          <%= form.text_field :email, class: 'form-control' %>
+          <%= form.email_field :email, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= form.label :password %>
-          <%= form.text_field :password, class: 'form-control' %>
+          <%= form.password_field :password, class: 'form-control' %>
         </div>
 
         <%= form.submit "Login", class: 'btn btn-success'  %>
