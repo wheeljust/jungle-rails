@@ -36,6 +36,18 @@ RSpec.describe User, type: :model do
     expect(@user).to_not be_valid
   end
 
+  it "is not valid when the same email already exists" do
+    @user1 = User.create(first_name: "John", last_name: "Rogers", email: "john@gmail.com", password: "jungle123", password_confirmation: "jungle123")
+    @user2 = User.create(first_name: "John", last_name: "Rogers", email: "JOHN@gmail.com", password: "jungle123", password_confirmation: "jungle123")
+    expect(@user2.errors.full_messages).to include("Email has already been taken")
+    expect(@user2).to_not be_valid
+  end
 
+  it "is not valid when the password is not the minimum length" do
+    @user = User.create(first_name: "John", last_name: "Rogers", email: "john@gmail.com", password: "book", password_confirmation: "book")
+    expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+    # puts @user.errors.full_messages
+    expect(@user).to_not be_valid
+  end
 
 end
